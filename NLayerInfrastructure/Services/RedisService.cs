@@ -19,6 +19,12 @@ namespace NLayerInfrastructure.Services
             await _db.StringSetAsync(key, value);
         }
 
+        public async Task DeleteExchangeRateAsync(string key)
+        {
+            await _db.KeyDeleteAsync(key);
+        }
+
+
         public async Task<string> GetExchangeRateAsync(string key)
         {
             return await _db.StringGetAsync(key);
