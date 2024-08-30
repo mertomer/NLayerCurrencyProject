@@ -1,5 +1,6 @@
 using NLayerCore.Interfaces;
-using NLayerInfrastructure.MessageBroker; // Burada ExchangeRateService'in doðru versiyonunu belirliyoruz
+using NLayerInfrastructure.MessageBroker;
+using NLayerInfrastructure.Services;
 using NLayerService.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,8 +10,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// RedisService'i DI sistemine kaydedin
+builder.Services.AddSingleton(new RedisService("localhost:6379")); // Redis baðlantý dizesi
+
 // Dependency Injection
-builder.Services.AddScoped<IExchangeRateService, NLayerInfrastructure.MessageBroker.ExchangeRateService>(); // Tam yol kullanýlarak belirsizlik giderildi
+builder.Services.AddScoped<IExchangeRateService, NLayerInfrastructure.MessageBroker.ExchangeRateService>();
 builder.Services.AddSingleton<IRabbitMQPublisher, RabbitMQPublisher>();
 builder.Services.AddSingleton<IRabbitMQConsumer, RabbitMQConsumer>();
 
