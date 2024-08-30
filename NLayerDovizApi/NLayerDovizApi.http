@@ -1,0 +1,6 @@
+@NLayerDovizApi_HostAddress = http://localhost:5164
+
+GET {{NLayerDovizApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
