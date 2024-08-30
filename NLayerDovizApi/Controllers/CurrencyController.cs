@@ -60,7 +60,7 @@ namespace NLayerDovizAPI.Controllers
 
             await _redisService.SetExchangeRateAsync(key, value);
 
-            return NoContent(); // Successfully updated, no content to return
+            return NoContent(); 
         }
 
         [HttpDelete("{currencyCode}")]
@@ -76,7 +76,7 @@ namespace NLayerDovizAPI.Controllers
 
             await _redisService.DeleteExchangeRateAsync(key);
 
-            return NoContent(); // Successfully deleted
+            return NoContent(); 
         }
     }
 }
