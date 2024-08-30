@@ -24,5 +24,16 @@ namespace NLayerDovizAPI.Controllers
             }
             return Ok(exchangeRate);
         }
+
+        [HttpGet("from-queue")]
+        public IActionResult GetCurrencyRateFromQueue()
+        {
+            var message = _exchangeRateService.GetExchangeRateFromQueue();
+            if (string.IsNullOrEmpty(message))
+            {
+                return NotFound("No data in the queue.");
+            }
+            return Ok(message);
+        }
     }
 }

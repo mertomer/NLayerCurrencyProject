@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using NLayerCore.Entities;
+﻿using NLayerCore.Entities;
 using NLayerCore.Interfaces;
 
 namespace NLayerService.Services
@@ -21,6 +15,11 @@ namespace NLayerService.Services
         public async Task<ExchangeRate> GetExchangeRateAsync(string currencyCode)
         {
             return await _exchangeRateService.GetExchangeRateAsync(currencyCode);
+        }
+
+        public string GetExchangeRateFromQueue()
+        {
+            return _exchangeRateService.GetExchangeRateFromQueue();
         }
     }
 }
