@@ -22,11 +22,11 @@ namespace NLayerInfrastructure.MessageBroker
 
         public async Task<ExchangeRate> GetExchangeRateAsync(string currencyCode)
         {
-            // Önce Redis'te döviz verisi var mı kontrol et
+            
             var cachedRate = await _redisService.GetExchangeRateAsync(currencyCode);
             if (!string.IsNullOrEmpty(cachedRate))
             {
-                // Redis'ten döviz verisini çek ve döndür
+                
                 var parts = cachedRate.Split(':');
                 return new ExchangeRate
                 {
@@ -36,7 +36,7 @@ namespace NLayerInfrastructure.MessageBroker
                 };
             }
 
-            // Eğer Redis'te yoksa, TCMB'den veriyi çek
+          
             string url = "https://www.tcmb.gov.tr/kurlar/today.xml";
             var xmldoc = new XmlDocument();
             xmldoc.Load(url);
