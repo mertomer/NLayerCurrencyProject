@@ -44,7 +44,7 @@ The **Service Layer** in this project orchestrates interactions between RabbitMQ
 ## Installation
 1. **Clone the repository**:
     ```bash
-    git clone https://github.com/yourusername/NLayerCurrencyAPI.git
+    git clone https://github.com/mertomer/NLayerProject.git
     cd NLayerCurrencyAPI
     ```
 2. **Install Redis**:
